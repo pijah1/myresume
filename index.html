@@ -39,6 +39,22 @@
       font-weight: bold;
     }
 
+    .play-btn {
+      padding: 10px 15px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+    }
+
+    .play-btn:hover {
+      background: #F8EDAD;
+
     nav a {
       color: #F8EDAD;
       text-decoration: none;
@@ -376,34 +392,13 @@
   <source src="wildflowerbaru.mp3" type="audio/mpeg">
 </audio>
 
-<button onclick="toggleMusic()"
-style="
-  background-color:#F8EDAD;
-  color:#9A0002;
-  padding:10px 20px;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 3px 6px rgba(0,0,0,0.3);
-">
-  Play / Pause
-</button>
-
-  <script>
-  function toggleMusic() {
-    var music = document.getElementById("MyMusic");
-
-    if (music.paused) {
-      music.play();
-    } else {
-      mussic.pause();
-    }
-  }
-  </script>
-
   <header>
     <h1>&#128247; Pijah</h1>
+
+    <button class="play-btn" onclick="document.getElementById('bgm')
+      <i class="fa-solid fa-play"></i> Play Music
+    </button>
+  </header>
     <nav>
       <a href="#home">Home</a>
       <a href="#biodata">Biodata</a>
@@ -618,6 +613,7 @@ style="
 
 </body>
 </html>
+
 
 
 
