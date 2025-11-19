@@ -543,57 +543,6 @@
 
 <script>
   <script>
-
-  /* 🔔 ADD THIS NOTIFICATION CODE */
-  window.addEventListener("load", function () {
-    alert("🎵 Music is now playing. Enjoy browsing!");
-  });
-
-  /* SLIDER SCRIPT */
-  const slider = document.querySelector('.education-slider');
-  const slides = document.querySelectorAll('.education-slide');
-  const totalSlides = slides.length;
-  let currentIndex = 0;
-
-  function updateSlidePosition() {
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
-
-  document.querySelector('.next-btn').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlidePosition();
-  });
-
-  document.querySelector('.prev-btn').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateSlidePosition();
-  });
-
-  /* Auto slide */
-  let autoSlide = setInterval(() => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlidePosition();
-  }, 4000);
-
-  const container = document.querySelector('.education-container');
-  container.addEventListener('mouseenter', () => clearInterval(autoSlide));
-  container.addEventListener('mouseleave', () => {
-    autoSlide = setInterval(() => {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      updateSlidePosition();
-    }, 4000);
-  });
-
-  /* SCROLL ANIMATION */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  });
-
-  document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
   
   /* SLIDER SCRIPT */
   const slider = document.querySelector('.education-slider');
@@ -644,6 +593,7 @@
 
 </body>
 </html>
+
 
 
 
