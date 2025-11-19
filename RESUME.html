@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Resume</title>
+
+  <!-- Font Awesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #FFB3B1;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+    }
+
+    /* Header and navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #9A0002;
+      padding: 10px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #F8EDAD;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #F8EDAD;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    main {
+      padding: 150px 40px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .text-section {
+      width: 60%;
+      text-align: justify;
+    }
+
+    .image-section {
+      width: 30%;
+      text-align: center;
+    }
+
+    .image-section img {
+      width: 250%;
+      max-width: 300px;
+      hight: 160px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 8px solid #F8EDAD;
+      object-fit: cover;
+    }
+
+    h2 {
+      color: #F8EDAD;
+    }
+
+    p {
+      color: #ffffff;
+      line-height: 2.0;
+    }
+
+    section {
+      padding: 40px;
+      background-color: #9A0002;
+      border-radius: 10px;
+      width: 80%;
+      margin: 20px auto;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    }
+
+    section h2 {
+      text-align: center;
+      color: #F8EDAD;
+    }
+
+    #home {
+      background-color: #9A0002;
+      width: 80%;
+      margin: 140px auto 40px;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    /* Biodata layout */
+    .biodata-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    #biodata table {
+      width: 60%;
+      border-collapse: collapse;
+      color: #ffffff;
+    }
+
+    #biodata td {
+      padding: 8px 10px;
+      vertical-align: top;
+    }
+
+    #biodata td:first-child {
+      font-weight: bold;
+      width: 200px;
+      color: #F8EDAD;
+    }
+
+    .biodata-photo {
+      width: 30%;
+      text-align: right;
+    }
+
+    .biodata-photo img {
+      width: 100%;
+      height: 250px;
+      border-radius: 15px;
+      border: 5px solid #F8EDAD;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    /* Experience section */
+    .experience-gallery {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .experience-item {
+      text-align: justify;
+      width: 300px;
+    }
+
+    .experience-item img {
+      width: 100%;
+      height: 250px;
+      border-radius: 15px;
+      border: 5px solid #F8EDAD;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    .experience-item p {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #ffffff;
+    }
+
+    /* Education slider section */
+    .education-container {
+      position: relative;
+      overflow: hidden;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .education-slider {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .education-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      width: 100%;
+      gap: 30px;
+    }
+
+    .education-slide img {
+      width: 100%;
+      max-width: 200px;
+      height: 250px;
+      border-radius: 20px;
+      border: 5px solid #F8EDAD;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+
+    /* Slider buttons */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #FFB3B1;
+      color: #9A0002;
+      font-weight: bold;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: 0.3s;
+      z-index: 10;
+    }
+
+    .slider-btn:hover {
+      background-color: #4747FF;
+      color: #ffffff;
+    }
+
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+
+    /* Sport Section */
+    #sport {
+      background-color: #9A0002;
+      padding: 40px;
+      border-radius: 10px;
+      width: 80%;
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    #sport h2 {
+      text-align: center;
+      color: #F8EDAD;
+      margin-bottom: 30px;
+    }
+
+    .sport-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      justify-items: center;
+    }
+
+    .sport-item {
+      text-align: center;
+    }
+
+    .sport-item img {
+      width: 100%;
+      max-width: 400px;
+      height: 250px;
+      border-radius: 15px;
+      border: 5px solid #F8EDAD;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+
+    .sport-item p {
+      margin-top: 10px;
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /*Gallery Section*/
+    #gallery {
+      background-color: #9A0002;
+      padding: 40px;
+      width: 80%;
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    #gallery h2 {
+      text-align: center;
+      color: #F8EDAD;
+      margin-bottom: 30px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      justify-items: center;
+    }
+
+    .gallery-item img {
+      width: 350px;
+      max-width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 5px solid #F8EDAD;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Social media */
+    .social-media {
+      margin-top: 20px;
+    }
+
+    .social-media a {
+      display: inline-block;
+      margin-right: 15px;
+      text-decoration: none;
+      color: #F8EDAD;
+      font-size: 28px;
+      transition: transform 0.2s ease, color 0.3s ease;
+    }
+
+    .social-media a:hover {
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #9A0002;
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    /*ANIMATIONS*/
+    .zoom:hover {
+      transform: scale(1.05);
+      transition: 0.3s ease-in-out;
+    }
+
+    /* SCROLL ANIMATION */
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .audio }
+    } 
+     <audio autoplay loop hidden>
+      <source src="audio\wildflower.mp3" type="audio/mp3">
+  </audio>
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>&#128247; Pijah</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#biodata">Biodata</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#sport">Sport</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+  </header>
+
+  <!-- HOME SECTION -->
+  <main id="home" class="hidden">
+    <div class="text-section">
+      <h2>Simple Introduction</h2>
+      <p>
+        I am Pijah, a 20-year-old undergraduate student pursuing Information Management
+        at UiTM Merbok. Residing in Taman Sungai Laka has provided a serene and motivating
+        environment that supports my dedication to academic excellence and personal
+        development. My studies have enabled me to develop critical skills in information
+        systems, data organization, and effective problem-solving, while fostering a strong
+        commitment to continuous learning and intellectual growth. Beyond my academic pursuits,
+        I engage in activities such as hiking, listening to music, and cooking, which enhance
+        my creativity, resilience, and capacity for balanced living. I am committed to 
+        applying my knowledge and skills in meaningful ways, contributing positively to both
+        academic professional endeavors.
+      </p>
+
+      <div class="social-media">
+        <a href="https://www.instagram.com/a.filzah_?igsh=MWpjZGxmaWRvNHJuNQ%3D%3D&utm_source=qr" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@a.filzah_?_t=ZS-90mYBdkv4jJ&_r=1" target="_blank" title="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="mailto:aizatulfilzahmohdzaini@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="image-section">
+      <img src="C:\Users\user\Desktop\PIJAH\image\filzah zaini.jpeg" alt="My Picture" class="zoom">
+    </div>
+  </main>
+
+  <!-- BIODATA SECTION -->
+  <section id="biodata" class="hidden">
+    <h2>My Biodata</h2>
+    <div class="biodata-container">
+      <table>
+        <tr><td>Name:</td><td>Nur Aizatul Filzah Binti Mohomad Zaini</td></tr>
+        <tr><td>Address:</td><td>No 22, Taman Sungai Laka, Jalan Kodiang 06010 Changlun, Kedah</td></tr>
+        <tr><td>Email:</td><td>aizatulfilzahmohdzaini@gmail.com</td></tr>
+        <tr><td>Mobile No:</td><td>+60 19-540 3890</td></tr>
+        <tr><td>Language:</td><td>Malay, English</td></tr>
+        <tr><td>Date of Birth:</td><td>19 August 2005</td></tr>
+        <tr><td>Nationality:</td><td>Malaysian</td></tr>
+        <tr><td>Religion:</td><td>Islam</td></tr>
+        <tr><td>Marital Status:</td><td>Single</td></tr>
+        <tr><td>Education:</td><td>Diploma in Information Management, UiTM Merbok</td></tr>
+        <tr><td>Experience:</td><td>Intern at Pejabat Pendidikan Daerah Kubang Pasu in Jitra (2 months)</td></tr>
+        <tr><td>Skills:</td><td>Microsoft Office, HTML, CapCut, Canva, PowerPoint, Word</td></tr>
+        <tr><td>Hobbies:</td><td>Hiking, Listening to Music, Cooking</td></tr>
+      </table>
+
+      <div class="biodata-photo">
+        <img src="aiza.jpeg" alt="My Biodata Picture" class="zoom">
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience" class="hidden">
+    <h2>My Experience</h2>
+    <div class="experience-gallery">
+      <div class="experience-item">
+        <img src="C:\Users\user\Desktop\PIJAH\image\experience 1.jpeg" class="zoom">
+        <p>Serving as a Jawatankuasa Perwakilan Kolej (JPK) member at my university, where I developed leadership, teamwork, and organizational skills.</p>
+      </div>
+      <div class="experience-item">
+        <img src="C:\Users\user\Desktop\PIJAH\image\experience 2.jpeg" class="zoom">
+        <p>Worked at UniMail for two days, assisting in mail distribution and managing official documents efficiently.</p>
+      </div>
+      <div class="experience-item">
+        <img src="C:\Users\user\Desktop\PIJAH\image\experience 3 baru.jpg" class="zoom">
+        <p>Participated in Clubfest, a university program organized by Majlis Perwakilan Pelajar (MPP), which strengthened my communication and teamwork skills.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="hidden">
+    <h2>My Education</h2>
+    <div class="education-container">
+      <button class="slider-btn prev-btn">◀</button>
+      <div class="education-slider">
+
+        <div class="education-slide">
+          <img src="C:\Users\user\Desktop\PIJAH\image\education 1.jpg" alt="Education 1">
+          <p>Attending Preschool (JAiK) Paya Nongmi, Changlun Kedah.<br>Year: 2011</p>
+        </div>
+
+        <div class="education-slide">
+          <img src="C:\Users\user\Desktop\PIJAH\image\education 2.jpg" alt="Education 2">
+          <p>Attended Sekolah Kebangsaan Dato' Wan Kemara from grade one to grade six.<br>Year: 2012-2017</p>
+        </div>
+
+        <div class="education-slide">
+          <img src="C:\Users\user\Desktop\PIJAH\image\education 3.jpg" alt="Education 3">
+          <p>Attended Sekolah Menengah Kebangsaan Changlun from Form one to Form Five.<br>Year: 2018-2022</p>
+        </div>
+
+        <div class="education-slide">
+          <img src="C:\Users\user\Desktop\PIJAH\image\education 4.jpg" alt="Education 4">
+          <p>Studying at Universiti Teknologi Mara's Kedah branch (2023-2026).<br>Year: 2023-2026</p>
+        </div>
+
+      </div>
+      <button class="slider-btn next-btn">▶</button>
+    </div>
+  </section>
+
+  <!-- SPORT SECTION -->
+  <section id="sport" class="hidden">
+    <h2>My Sport Activities</h2>
+    <div class="sport-gallery">
+      <div class="sport-item">
+        <img src="C:\Users\user\Desktop\PIJAH\image\sport 1.jpg" class="zoom">
+        <p>Joined played futsal in SAF 2025 (inter-faculty sports) and third place.</p>
+      </div>
+      <div class="sport-item">
+        <img src="C:\Users\user\Desktop\PIJAH\image\sport 2.jpg" class="zoom">
+        <p>Joined played futsal in SAF 2024 (inter-faculty sports) and second place.</p>
+      </div>
+      <div class="sport-item">
+        <img src="C:\Users\user\Desktop\PIJAH\image\sport 3.jpg" class="zoom">
+        <p>Organizing a brisk-walk exercise for JPK Murni in the evening.</p>
+      </div>
+      <div class="sport-item">
+        <img src="C:\Users\user\Desktop\PIJAH\image\sport 4.jpg" class="zoom">
+        <p>Organizing an evening sports activity for JPKNR, a small-scale sports event.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section id="gallery" class="hidden">
+    <h2>My Gallery</h2>
+
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="C:\Users\user\Desktop\PIJAH\image\gallery 1.jpg" class="zoom"></div>
+      <div class="gallery-item"><img src="C:\Users\user\Desktop\PIJAH\image\gallery 2.jpg" class="zoom"></div>
+      <div class="gallery-item"><img src="C:\Users\user\Desktop\PIJAH\image\gallery 3.jpg" class="zoom"></div>
+      <div class="gallery-item"><img src="C:\Users\user\Desktop\PIJAH\image\gallery 4.jpg" class="zoom"></div>
+      <div class="gallery-item"><img src="C:\Users\user\Desktop\PIJAH\image\gallery 5.jpg" class="zoom"></div>
+      <div class="gallery-item"><img src="C:\Users\user\Desktop\PIJAH\image\gallery 6.jpg" class="zoom"></div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Made by Pijah
+  </footer>
+
+<script>
+  /* SLIDER SCRIPT */
+  const slider = document.querySelector('.education-slider');
+  const slides = document.querySelectorAll('.education-slide');
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+
+  function updateSlidePosition() {
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  document.querySelector('.next-btn').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlidePosition();
+  });
+
+  document.querySelector('.prev-btn').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlidePosition();
+  });
+
+  /* Auto slide */
+  let autoSlide = setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlidePosition();
+  }, 4000);
+
+  const container = document.querySelector('.education-container');
+  container.addEventListener('mouseenter', () => clearInterval(autoSlide));
+  container.addEventListener('mouseleave', () => {
+    autoSlide = setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlidePosition();
+    }, 4000);
+  });
+
+  /* SCROLL ANIMATION */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
